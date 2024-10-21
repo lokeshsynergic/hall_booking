@@ -4,7 +4,7 @@
             <section class="logoSection"><img src="{{ asset('public/user/images/logo.png') }}" alt="" /></section>
             <section class="logoRightSection">
                 <ul class="location">
-                    <li class="phoneLi"><i class="fa fa-phone" aria-hidden="true"></i> 6292311219</li>
+                    <li class="phoneLi"><i class="fa fa-phone" aria-hidden="true"></i> 6291154616</li>
                     <li class="addressTop"><i class="fa fa-map-marker" aria-hidden="true"></i> ICMARD Bulding, 6th
                         Floor, 14/2,
                         <br>
@@ -131,6 +131,6 @@
 
             </div>
         </section>
-        <marquee style="color: blue;font-size: 18px;font-weight: bold;">For cancellation of Booking Please Contact to ICMARD office.Mobile : 6292311219</marquee>
+        <marquee style="color: blue;font-size: 18px;font-weight: bold;">For cancellation of Booking Please Contact to ICMARD office.Mobile : 6291154616</marquee>
     </section>
 </header>
