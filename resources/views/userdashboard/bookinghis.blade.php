@@ -10,7 +10,6 @@
                 @else
                 For cancellation of Booking Please Contact to ICMARD office.Mobile : 6292311219
                 @endif
-
             </h2>
             <div class="row">
                 <div class="col-12">
