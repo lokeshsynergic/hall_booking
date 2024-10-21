@@ -1,7 +1,7 @@
 <footer class="footerClass">
     <div class="footer_blue">
         <div class="wrapper">
-        <marquee style="color: white;font-size: 18px;font-weight: bold;">For cancellation of Booking Please Contact to ICMARD office.Mobile : 6292311219</marquee>
+        <marquee style="color: white;font-size: 18px;font-weight: bold;">For cancellation of Booking Please Contact to ICMARD office.Mobile : 6291154616</marquee>
             <div class="col-sm-3 float-left">
 
                 <h2>Quick Link</h2>
