@@ -20,7 +20,7 @@
                 Completed <img src="{{ asset('public/images/suc.png') }}" class="success" />
                 <!-- <i class="fa fa-check-circle-o success" aria-hidden="true"></i> -->
             </a>
-            <span>150</span>
+            <span></span>
         </h3>
                 <!-- </div> -->
                 </div>
@@ -42,7 +42,7 @@
                 <img src="{{ asset('public/images/cancel.png') }}" class="cancell" />
                 <!-- <i class="fa fa-times-circle cancell" aria-hidden="true"></i>  -->
             </a>
-                <span>250</span>
+                <span></span>
                 </h3>
                 
                 </div>
@@ -89,7 +89,7 @@
                 <img src="{{ asset('public/images/group.png') }}" class="guest" />
                 <!-- <i class="fa fa-users guest" aria-hidden="true"></i> -->
                 </a>
-                <span>320</span>
+                <span></span>
                 </h3>
               </div>
 
