@@ -179,7 +179,11 @@ class BookingController extends Controller
 
             $user_id=$data->id;
         }
-
+         $book_username = $request->room1_adult1_first_name." ".$request->room1_adult1_last_name;
+         $template= "Dear $book_username Thank you for the booking. Your profile has been successfully created. You can now manage your bookings and enjoy exclusive benefits. Login with your registered mobile no. - ICMARD";
+        
+       
+        //die();
         $lock_rooms=TdRoomLock::where('room_type_id',$request->room_type_id)
             ->whereDate('date','>=',date('Y-m-d',strtotime($request->checkInDate)))
             ->whereDate('date','<=',date('Y-m-d',strtotime($request->checkOutDate)))
@@ -310,6 +314,7 @@ class BookingController extends Controller
             //         ));
             //     }
             // }
+        
             $success='S';
             $failed_id='';
         }else{
@@ -318,7 +323,8 @@ class BookingController extends Controller
             $booking_id='';
             $failed_id='Fail_'.rand(0000,9999);
         }
-       
+        $this->sendsms($request->contact_no,$template);
+
          //  End Newly added code for booking   //
 
         // return view('payment',['searched'=>$request,'interval'=>$interval,'room_rent'=>$room_rent,
@@ -515,6 +521,46 @@ class BookingController extends Controller
     //      return redirect()->route('paymentgateway',['booking_id'=>$booking_id]);
       
     // }
+
+    public function sendsms($phone_no,$template)
+    {
+            $phone_no = $phone_no; // Replace with the actual phone number
+            // Message text
+            $text = $template;
+            // URL encode the text to handle special characters
+            $encoded_text = urlencode($text);
+            $user = env('SMS_TEMP_USER');
+            $pass = env('SMS_TEMP_PASS');
+            $senderid = env('SMS_TEMP_SENDID');
+            // Construct the URL with the encoded text
+            // $url = 'https://bulksms.sssplsales.in/api/api_http.php?username='.$user.'&password='.$pass.'&senderid='.$senderid.'&to=' . $phone_no . '&text=' . $encoded_text . '&route=Informative&type=text';
+            $url = 'http://sms.synergicapi.in/api.php?username='.$user.'&apikey='.$pass.'&senderid='.$senderid.'&route=OTP&mobile='.$phone_no.'&text='.$encoded_text;
+            // Initialize cURL
+            $curl = curl_init();
+            curl_setopt_array($curl, array(
+                CURLOPT_URL => $url,
+                CURLOPT_RETURNTRANSFER => true,
+                CURLOPT_ENCODING => '',
+                CURLOPT_MAXREDIRS => 10,
+                CURLOPT_TIMEOUT => 30, // Set a reasonable timeout
+                CURLOPT_FOLLOWLOCATION => true,
+                CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+                CURLOPT_CUSTOMREQUEST => 'GET',
+            ));
+
+            // Execute the request
+            $response = curl_exec($curl);
+            // Check for cURL errors
+            if (curl_errno($curl)) {
+                $error_msg = curl_error($curl);
+                echo "cURL Error: $error_msg";
+            } else {
+                // Output the response from the API
+                echo $response;
+            }
+            // Close cURL session
+            curl_close($curl);
+    }
 
     public function PaymentSuccess(Request $request)
     {
@@ -731,6 +777,7 @@ class BookingController extends Controller
 
             DB::table('td_room_book')->where('booking_id',$booking_id)->update(
                 ['final_amount' =>$amount,'full_paid' => 'Y','final_bill_flag'=>'Y','total_amount'=>$amount,'paid_amount'=>$amount]);
+          
             }
             TdRoomPayment::create(array(
                 'booking_id' =>$booking_id,
