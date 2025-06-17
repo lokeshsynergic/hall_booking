@@ -179,7 +179,7 @@ class BookingController extends Controller
 
             $user_id=$data->id;
         }
-         $book_username = $request->room1_adult1_first_name." ".$request->room1_adult1_last_name;
+         $book_username = $request->room1_adult1_first_name;
 
          $template= "Dear $book_username, Thank you for the booking. Your profile has been successfully created. You can now manage your bookings and enjoy exclusive benefits. Login with your registered mobile no. - ICMARD";
         
