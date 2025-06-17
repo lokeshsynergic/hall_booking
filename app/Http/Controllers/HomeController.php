@@ -200,8 +200,8 @@ class HomeController extends Controller
             $pass = env('SMS_TEMP_PASS');
             $senderid = env('SMS_TEMP_SENDID');
             // Construct the URL with the encoded text
-            $url = 'https://bulksms.sssplsales.in/api/api_http.php?username='.$user.'&password='.$pass.'&senderid='.$senderid.'&to=' . $phone_no . '&text=' . $encoded_text . '&route=Informative&type=text';
-
+            // $url = 'https://bulksms.sssplsales.in/api/api_http.php?username='.$user.'&password='.$pass.'&senderid='.$senderid.'&to=' . $phone_no . '&text=' . $encoded_text . '&route=Informative&type=text';
+            $url = 'http://sms.synergicapi.in/api.php?username='.$user.'&apikey='.$pass.'&senderid='.$senderid.'&route=OTP&mobile='.$phone_no.'&text='.$encoded_text;
             // Initialize cURL
             $curl = curl_init();
             curl_setopt_array($curl, array(
